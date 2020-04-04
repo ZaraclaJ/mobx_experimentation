@@ -1,16 +1,33 @@
 # mobx_experimentation
 
-A new Flutter project.
+A project to play with the [mobX](https://mobx.netlify.com/getting-started) package.
 
-## Getting Started
+This project aims to experiment when there are dependencies between different Stores. A simple example is :
+```dart
+abstract class _StoreA with Store {
+  @observable
+  bool state = false;
 
-This project is a starting point for a Flutter application.
+  @action
+  void switchState() {
+    state = !state;
+  }
+}
 
-A few resources to get you started if this is your first Flutter project:
+abstract class _StoreB with Store {
+  _StoreB({@required StoreA storeA}) : _storeA = storeA;
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+  final StoreA _storeA;
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  @computed
+  bool get storeAState => _storeA.state;
+}
+```
+
+It helps to understand the concept of @computed even if the observable comes from an other store.
+There are logs in the view to see which part of the code is rebuilded when the observables change.
+
+
+
+
+
