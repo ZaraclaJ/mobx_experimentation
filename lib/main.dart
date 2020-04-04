@@ -28,7 +28,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("All widget builded");
+    print("All widget built");
     final storeA = Provider.of<StoreA>(context, listen: false);
     final storeB = Provider.of<StoreB>(context, listen: false);
 
@@ -47,7 +47,7 @@ class MyHomePage extends StatelessWidget {
               text: "Store A state from B without observer",
             ),
             Observer(builder: (context) {
-              print("Store A observer builded");
+              print("Store A observer built");
               final state = storeA.state;
               return _StateContainer(
                 state: state,
@@ -55,7 +55,7 @@ class MyHomePage extends StatelessWidget {
               );
             }),
             Observer(builder: (context) {
-              print("Store B observer builded");
+              print("Store B observer built");
               final state = storeB.storeAState;
               return _StateContainer(
                 state: state,
@@ -63,12 +63,12 @@ class MyHomePage extends StatelessWidget {
               );
             }),
             Observer(builder: (context) {
-              print("Row observer builded");
+              print("Row observer built");
               return Row(
                 children: <Widget>[
                   Expanded(
                     child: Observer(builder: (context) {
-                      print("Store A observer in row builded");
+                      print("Store A observer in row built");
                       return _StateContainer(
                         text: "Store A state in row",
                         state: storeA.state,
@@ -77,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Expanded(
                     child: Observer(builder: (context) {
-                      print("Store A from B observer in row builded");
+                      print("Store A from B observer in row built");
                       return _StateContainer(
                         text: "Store A state from B in row",
                         state: storeB.storeAState,

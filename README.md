@@ -25,7 +25,9 @@ abstract class _StoreB with Store {
 ```
 
 It helps to understand the concept of @computed even if the observable comes from an other store.
-There are logs in the view to see which part of the code is rebuilded when the observables change.
+There are logs in the view to see which part of the code is rebuilt when the observables change.
+
+<img src="Screenshot_1586016032.png" alt="drawing" width="200"/>
 
 
 
