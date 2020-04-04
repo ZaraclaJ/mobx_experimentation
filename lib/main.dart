@@ -42,6 +42,10 @@ class MyHomePage extends StatelessWidget {
               state: storeA.state,
               text: "Store A state without observer",
             ),
+            _StateContainer(
+              state: storeB.storeAState,
+              text: "Store A state from B without observer",
+            ),
             Observer(builder: (context) {
               print("Store A observer builded");
               final state = storeA.state;
