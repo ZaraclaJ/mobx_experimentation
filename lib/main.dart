@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx_experimentation/count_page.dart';
 import 'package:mobx_experimentation/root_provider.dart';
-import 'package:mobx_experimentation/store_a.dart';
-import 'package:mobx_experimentation/store_b.dart';
-import 'package:provider/provider.dart';
+import 'package:mobx_experimentation/state_page.dart';
 
 const double defaultSpacing = 8;
 
@@ -17,108 +15,42 @@ class MyApp extends StatelessWidget {
     return RootProvider(
       child: MaterialApp(
         title: 'MobX experiment',
-        home: MyHomePage(),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  MyHomePage({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    print("All widget built");
-    final storeA = Provider.of<StoreA>(context, listen: false);
-    final storeB = Provider.of<StoreB>(context, listen: false);
-
-    return Scaffold(
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _StateContainer(
-              state: storeA.state,
-              text: "Store A state without observer",
+        home: Scaffold(
+          appBar: AppBar(title: const Text('Home')),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const <Widget>[
+                _HomeButton(
+                  page: StatePage(),
+                  text: 'State',
+                ),
+                _HomeButton(
+                  page: CountPage(),
+                  text: 'Count',
+                ),
+              ],
             ),
-            _StateContainer(
-              state: storeB.storeAState,
-              text: "Store A state from B without observer",
-            ),
-            Observer(builder: (context) {
-              print("Store A observer built");
-              final state = storeA.state;
-              return _StateContainer(
-                state: state,
-                text: "Store A state",
-              );
-            }),
-            Observer(builder: (context) {
-              print("Store B observer built");
-              final state = storeB.storeAState;
-              return _StateContainer(
-                state: state,
-                text: "Store A state from store B",
-              );
-            }),
-            Observer(builder: (context) {
-              print("Row observer built");
-              return Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Observer(builder: (context) {
-                      print("Store A observer in row built");
-                      return _StateContainer(
-                        text: "Store A state in row",
-                        state: storeA.state,
-                      );
-                    }),
-                  ),
-                  Expanded(
-                    child: Observer(builder: (context) {
-                      print("Store A from B observer in row built");
-                      return _StateContainer(
-                        text: "Store A state from B in row",
-                        state: storeB.storeAState,
-                      );
-                    }),
-                  ),
-                  Expanded(
-                    child: _StateContainer(
-                      text: "Store A state from B in row",
-                      state: storeA.state,
-                    ),
-                  ),
-                ],
-              );
-            }),
-            RaisedButton(
-              child: Text("Change the store A state !"),
-              onPressed: () => storeA.switchState(),
-            )
-          ],
+          ),
         ),
       ),
     );
   }
 }
 
-class _StateContainer extends StatelessWidget {
-  const _StateContainer({Key key, @required this.state, @required this.text}) : super(key: key);
+class _HomeButton extends StatelessWidget {
+  const _HomeButton({Key key, @required this.page, @required this.text}) : super(key: key);
 
-  final bool state;
+  final Widget page;
   final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(defaultSpacing),
-      padding: EdgeInsets.all(defaultSpacing),
-      color: state ? Colors.green : Colors.red,
-      child: Text(
-        "$text : $state",
-        style: TextStyle(color: Colors.white),
+    return RaisedButton(
+      child: Text(text),
+      onPressed: () => Navigator.push<void>(
+        context,
+        MaterialPageRoute<void>(builder: (context) => page),
       ),
     );
   }

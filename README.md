@@ -4,7 +4,7 @@ A project to play with the [mobX](https://mobx.netlify.com/getting-started) pack
 
 This project aims to experiment when there are dependencies between different Stores. A simple example is :
 ```dart
-abstract class _StoreA with Store {
+abstract class _StateA with Store {
   @observable
   bool state = false;
 
@@ -14,13 +14,13 @@ abstract class _StoreA with Store {
   }
 }
 
-abstract class _StoreB with Store {
-  _StoreB({@required StoreA storeA}) : _storeA = storeA;
+abstract class _StateA with Store {
+  _StateA({@required StateA stateA}) : _stateA = stateA;
 
-  final StoreA _storeA;
+  final StateA _stateA;
 
   @computed
-  bool get storeAState => _storeA.state;
+  bool get stateAState => _stateA.state;
 }
 ```
 

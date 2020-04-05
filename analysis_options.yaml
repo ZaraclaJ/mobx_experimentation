@@ -1,0 +1,59 @@
+include: package:pedantic/analysis_options.yaml
+
+analyzer:
+  errors:
+    missing_return: error
+    missing_required_param: error
+    must_call_super: error 
+  strong-mode: 
+    implicit-casts: false
+    implicit-dynamic: false
+
+linter:
+  rules:
+    # STYLE
+    - camel_case_types
+    - file_names
+    - non_constant_identifier_names
+    - constant_identifier_names # prefer
+    - directives_ordering
+#    - lines_longer_than_80_chars # avoid
+    # DOCUMENTATION
+#    - package_api_docs # prefer
+#    - public_member_api_docs # prefer
+#    - comment_references
+    # USAGE
+    - prefer_adjacent_string_concatenation
+    - prefer_interpolation_to_compose_strings # prefer
+    - unnecessary_brace_in_string_interps # avoid
+    - prefer_collection_literals
+    #- avoid_function_literals_in_foreach_calls # avoid
+    - prefer_function_declarations_over_variables
+    - unnecessary_lambdas
+    - unnecessary_getters_setters
+    #- prefer_expression_function_bodies # consider
+    - unnecessary_this
+    - prefer_initializing_formals
+    - avoid_catches_without_on_clauses # avoid
+    # DESIGN
+    - use_to_and_as_if_applicable # prefer
+    - one_member_abstracts # avoid
+    #- avoid_classes_with_only_static_members # avoid
+    - prefer_final_fields # prefer
+    - use_setters_to_change_properties
+    - avoid_setters_without_getters
+    - avoid_returning_null # avoid
+    - avoid_returning_this # avoid
+    - prefer_typing_uninitialized_variables # prefer
+#    - omit_local_variable_types # avoid
+    - prefer_generic_function_type_aliases
+    - avoid_private_typedef_functions
+    #- use_function_type_syntax_for_parameters # consider
+#    - avoid_positional_boolean_parameters # avoid
+    - hash_and_equals
+    - avoid_null_checks_in_equality_operators
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - unnecessary_const

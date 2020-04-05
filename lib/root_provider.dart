@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:mobx_experimentation/store_a.dart';
-import 'package:mobx_experimentation/store_b.dart';
+import 'package:mobx_experimentation/counter_store.dart';
+import 'package:mobx_experimentation/state_store.dart';
 import 'package:provider/provider.dart';
 
 class RootProvider extends StatelessWidget {
@@ -13,11 +13,14 @@ class RootProvider extends StatelessWidget {
     return MultiProvider(
       // Instantiate all the global providers
       providers: [
-        Provider<StoreA>(
-          create: (context) => StoreA(),
+        Provider<StateAStore>(
+          create: (context) => StateAStore(),
         ),
-        Provider<StoreB>(
-          create: (context) => StoreB(storeA: Provider.of<StoreA>(context, listen: false)),
+        Provider<StateBStore>(
+          create: (context) => StateBStore(stateA: Provider.of<StateAStore>(context, listen: false)),
+        ),
+        Provider<CountStore>(
+          create: (context) => CountStore(),
         ),
       ],
       child: child,
