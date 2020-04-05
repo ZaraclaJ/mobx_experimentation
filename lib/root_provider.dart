@@ -28,6 +28,7 @@ class RootProvider extends StatelessWidget {
         ),
         Provider<ReactionStore>(
           create: (context) => ReactionStore(listStore: Provider.of<ListStore>(context, listen: false)),
+          dispose: (context, store) => store.dispose(),
         ),
       ],
       child: child,
