@@ -29,41 +29,6 @@ class _ListPageState extends State<ListPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const _Title(text: 'Without observer'),
-              Wrap(
-                children: <Widget>[
-                  Expanded(
-                    child: _CountContainer(
-                      text: 'List store list count : ${listStore.list.length}',
-                    ),
-                  ),
-                  Expanded(
-                    child: _CountContainer(
-                      text: 'List store observable list count : ${listStore.observableList.length}',
-                    ),
-                  ),
-                  Expanded(
-                    child: _CountContainer(
-                      text: 'Reaction store computed list count : ${reactionStore.computedListCount}',
-                    ),
-                  ),
-                  Expanded(
-                    child: _CountContainer(
-                      text: 'Reaction store computed observable list count : ${reactionStore.computedObservableListCount}',
-                    ),
-                  ),
-                  Expanded(
-                    child: _CountContainer(
-                      text: 'Reaction store reaction list count : ${reactionStore.listCount}',
-                    ),
-                  ),
-                  Expanded(
-                    child: _CountContainer(
-                      text: 'Reaction store reaction observable list count : ${reactionStore.observableListCount}',
-                    ),
-                  ),
-                ],
-              ),
               const _Title(text: 'With individual observer'),
               Wrap(
                 children: <Widget>[

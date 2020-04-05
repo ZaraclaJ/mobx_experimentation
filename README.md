@@ -27,7 +27,10 @@ abstract class _StateA with Store {
 It helps to understand the concept of @computed even if the observable comes from an other store.
 There are logs in the view to see which part of the code is rebuilt when the observables change.
 
-<img src="Screenshot_1586016032.png" alt="drawing" width="200"/>
+<img src="Home.png" alt="drawing" width="200"/>
+<img src="State.png" alt="drawing" width="200"/>
+<img src="Count.png" alt="drawing" width="200"/>
+<img src="List.png" alt="drawing" width="200"/>
 
 
 
