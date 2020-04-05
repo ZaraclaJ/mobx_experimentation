@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_experimentation/counter_store.dart';
+import 'package:mobx_experimentation/main.dart';
 import 'package:provider/provider.dart';
-
-import 'main.dart';
 
 class CountPage extends StatelessWidget {
   const CountPage({Key key}) : super(key: key);

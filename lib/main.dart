@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobx_experimentation/count_page.dart';
+import 'package:mobx_experimentation/list_page.dart';
 import 'package:mobx_experimentation/root_provider.dart';
 import 'package:mobx_experimentation/state_page.dart';
 
@@ -28,6 +29,10 @@ class MyApp extends StatelessWidget {
                 _HomeButton(
                   page: CountPage(),
                   text: 'Count',
+                ),
+                _HomeButton(
+                  page: ListPage(),
+                  text: 'List',
                 ),
               ],
             ),
