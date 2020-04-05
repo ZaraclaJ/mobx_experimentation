@@ -16,7 +16,7 @@ class StatePage extends StatelessWidget {
     final stateB = Provider.of<StateBStore>(context, listen: false);
 
     return Scaffold(
-      appBar: AppBar(title: Text("State")),
+      appBar: AppBar(title: const Text('State')),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

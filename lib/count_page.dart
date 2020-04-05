@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_experimentation/counter_store.dart';
-import 'package:mobx_experimentation/state_store.dart';
 import 'package:provider/provider.dart';
 
 import 'main.dart';
@@ -16,7 +15,7 @@ class CountPage extends StatelessWidget {
     final countStore = Provider.of<CountStore>(context, listen: false);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Count")),
+      appBar: AppBar(title: const Text('Count')),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -67,6 +66,27 @@ class CountPage extends StatelessWidget {
                       print('Store B observer built');
                       return _CountContainer(
                         text: countStore.computedCountString,
+                      );
+                    }),
+                  ),
+                ],
+              ),
+              const _Title(text: 'Color With individual observer'),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Observer(builder: (context) {
+                      print('Store B observer built');
+                      return _ColorContainer(
+                        color: countStore.color,
+                      );
+                    }),
+                  ),
+                  Expanded(
+                    child: Observer(builder: (context) {
+                      print('Store B observer built');
+                      return _ColorContainer(
+                        color: countStore.computedColor,
                       );
                     }),
                   ),
@@ -141,6 +161,27 @@ class _CountContainer extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(color: Colors.black),
+      ),
+    );
+  }
+}
+
+class _ColorContainer extends StatelessWidget {
+  const _ColorContainer({
+    Key key,
+    @required this.color,
+  }) : super(key: key);
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(defaultSpacing),
+      padding: const EdgeInsets.all(defaultSpacing),
+      color: color,
+      child: const SizedBox(
+        height: 10,
       ),
     );
   }

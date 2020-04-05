@@ -15,6 +15,12 @@ mixin _$CountStore on _CountStore, Store {
   String get computedCountString => (_$computedCountStringComputed ??=
           Computed<String>(() => super.computedCountString))
       .value;
+  Computed<Color> _$computedColorComputed;
+
+  @override
+  Color get computedColor =>
+      (_$computedColorComputed ??= Computed<Color>(() => super.computedColor))
+          .value;
 
   final _$countAtom = Atom(name: '_CountStore.count');
 
@@ -48,7 +54,7 @@ mixin _$CountStore on _CountStore, Store {
   @override
   String toString() {
     final string =
-        'count: ${count.toString()},computedCountString: ${computedCountString.toString()}';
+        'count: ${count.toString()},computedCountString: ${computedCountString.toString()},computedColor: ${computedColor.toString()}';
     return '{$string}';
   }
 }
